@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Sticker from './Sticker'
 
 class StickerBar extends Component {
 
@@ -20,23 +20,22 @@ class StickerBar extends Component {
 
   	let stickerElements = [];
 
-  	this.state.stickers.forEach((i) => {
-  		stickerElements.push(
-  				<div key={i.name}
-  						className={i.name}
-	  					style={{backgroundColor: i.color}}
-  				>
-  					{i.name}
-  				</div>
-  			)
-  	})
-
-
-  	console.log(stickerElements)
+  	// this.state.stickers.forEach((i) => {
+  	// 	stickerElements.push(
+  	// 			<div key={i.name}
+  	// 					className={i.name}
+	  // 					style={{backgroundColor: i.color}}
+  	// 			>
+  	// 				{i.name}
+  	// 			</div>
+  	// 		)
+  	// })
 
     return (
       <div className="StickerBar">
-      	{stickerElements}
+        <Sticker
+          initialPosition={{x: 100,y: 100}}
+         />
       </div>
     );
   }
