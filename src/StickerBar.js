@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Sticker from './Sticker'
+import Grid from '@material-ui/core/Grid';
 
 class StickerBar extends Component {
 
@@ -32,11 +33,18 @@ class StickerBar extends Component {
   	// })
 
     return (
-      <div className="StickerBar">
+      <Grid container className="StickerBar">
+        <Grid item xs={6}>
         <Sticker
-          initialPosition={{x: 100,y: 100}}
-         />
-      </div>
+          // initialPosition={{x: 100,y: 100}}
+         />        
+        </Grid>
+        <Grid item xs={6}>
+        <Sticker
+          // initialPosition={{x: 100,y: 100}}
+         />        
+        </Grid>
+      </Grid>
     );
   }
 }

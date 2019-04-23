@@ -33,6 +33,11 @@ class Sticker extends Component {
     } else if (!this.state.dragging && prevState.dragging) {
       document.removeEventListener('mousemove', this.onMouseMove);
       document.removeEventListener('mouseup', this.onMouseUp);
+      
+      // TODO
+      this.setState({
+        initialPosition: {x: 0, y: 0}
+      })
     }
   }
 
@@ -82,7 +87,7 @@ class Sticker extends Component {
 
   render() {
    //  console.log(this.state.dragging)
-  	// console.log(this.state.position)
+  	console.log(this.state.position)
 
     return (
       <div
@@ -92,7 +97,7 @@ class Sticker extends Component {
       	style={{width:50, 
                 height:50, 
                 backgroundColor: 'red', 
-                position: 'absolute', 
+                position: this.state.dragging ? 'absolute' : 'static', 
                 left: this.state.position.x + 'px', 
                 top: this.state.position.y + 'px'}}
         onMouseDown={this.onMouseDown}
