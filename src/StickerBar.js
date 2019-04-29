@@ -5,16 +5,28 @@ import Grid from '@material-ui/core/Grid';
 class StickerBar extends Component {
 
 	state = {
-		stickers: [
-			{
-				name: 'smile',
-				color: 'yellow'
-			},
-			{
-				name: 'star',
-				color: 'red'
-			}
-		]
+		// stickers: [
+		// 	{
+		// 		name: 'smile',
+		// 		color: 'yellow'
+		// 	},
+		// 	{
+		// 		name: 'star',
+		// 		color: 'red'
+		// 	}
+		// ]
+	}
+
+	componentDidMount() {
+		console.log('Sticker Bar component did mount')
+
+		// align stickers here 
+		// this.setStickerPosition();
+	}
+
+	setStickerPosition = (size) => {
+		console.log('set sticker position')
+		console.log('size: ' + size)
 	}
 
   render() {
@@ -37,13 +49,19 @@ class StickerBar extends Component {
         <Grid item xs={6}>
         <Sticker
           // initialPosition={{x: 100,y: 100}}
+          initialized={true}
+          sendStickerSize={this.setStickerPosition}
          />        
         </Grid>
         <Grid item xs={6}>
         <Sticker
           // initialPosition={{x: 100,y: 100}}
+          initialized={true}
+          sendStickerSize={this.setStickerPosition}
          />        
         </Grid>
+
+
       </Grid>
     );
   }

@@ -13,18 +13,28 @@ class Sticker extends Component {
 		initialPosition: PropTypes.shape({
 			x: PropTypes.number.isRequired,
 			y: PropTypes.number.isRequired
-		})
+		}),
+    initialized: PropTypes.bool.isRequired
 	}
 
 	static defaultProps = {
-		initialPosition: {x: 0, y: 0}
+		initialPosition: {x: 0, y: 0},
+    initialized: false
 	}
 
 	state = {
 		position: this.props.initialPosition,
 		dragging: false,
-    rel: null // mouse position relative to the component x, y
+    rel: null, // mouse position relative to the component x, y
+    initialized: this.props.initialized,
+    size: 50
 	}
+
+
+  componentDidMount() {
+    console.log('sticker component did mount')
+    this.props.sendStickerSize(this.state.size);
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.dragging && !prevState.dragging) {
@@ -35,9 +45,9 @@ class Sticker extends Component {
       document.removeEventListener('mouseup', this.onMouseUp);
       
       // TODO
-      this.setState({
-        initialPosition: {x: 0, y: 0}
-      })
+      // this.setState({
+      //   initialPosition: {x: 0, y: 0}
+      // })
     }
   }
 
@@ -87,7 +97,7 @@ class Sticker extends Component {
 
   render() {
    //  console.log(this.state.dragging)
-  	console.log(this.state.position)
+  	// console.log(this.state.position)
 
     return (
       <div
@@ -99,7 +109,9 @@ class Sticker extends Component {
                 backgroundColor: 'red', 
                 position: this.state.dragging ? 'absolute' : 'static', 
                 left: this.state.position.x + 'px', 
-                top: this.state.position.y + 'px'}}
+                top: this.state.position.y + 'px',
+                display: this.state.initialized ? 'block' : 'none'
+              }}
         onMouseDown={this.onMouseDown}
       >
       </div>

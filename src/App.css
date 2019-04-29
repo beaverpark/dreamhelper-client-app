@@ -32,18 +32,24 @@
   }
 }
 */
-.Main-container {
+
+/*.Main-container {
   height: 100vh;
   width: 100%;
+}*/
+
+
+.main-section {
+
 }
 
-
-.StickerBar {
+.sticker-bar {
   /*background-color: ivory;*/
   height: 100%;
+
 }
 
-.Board {
+.board {
   background-color: lightyellow;
   height: 100%;
 }
